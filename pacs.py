@@ -24,7 +24,14 @@ class PACSDataset(Dataset):
         return image, label
 
 
-def get_data_loaders(target_domain, batch_size, shuffle=True, transform=None, target_transform=None) -> tuple[DataLoader, DataLoader]:
+def get_data_loaders(
+        target_domain,
+        train_batch_size,
+        test_batch_size=128,
+        shuffle_train=True,
+        shuffle_test=False,
+        transform=None,
+        target_transform=None) -> tuple[DataLoader, DataLoader]:
     """
     Returns a train and a test data loader for the PACS dataset for cross validation at a domain generalization task.
     """
@@ -32,12 +39,12 @@ def get_data_loaders(target_domain, batch_size, shuffle=True, transform=None, ta
     source_domains = domains - {target_domain}
 
     train_df = pacs[pacs['domain'].isin(source_domains)]
-    test_df = pacs[pacs['domain'] != target_domain]
+    test_df = pacs[pacs['domain'] == target_domain]
 
     train_dataset = PACSDataset(train_df, transform, target_transform)
     test_dataset = PACSDataset(test_df, transform, target_transform)
 
-    train_loader = DataLoader(train_dataset, batch_size, shuffle)
-    test_loader = DataLoader(test_dataset, batch_size, shuffle)
+    train_loader = DataLoader(train_dataset, train_batch_size, shuffle_train)
+    test_loader = DataLoader(test_dataset, test_batch_size, shuffle_test)
 
     return train_loader, test_loader
