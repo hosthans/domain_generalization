@@ -67,31 +67,28 @@ def get_data_loaders(
 def get_nomalization_stats(target_domain):
     """
     Returns mean and standard deviation of the images in the train split for the given target domain.
+    Method taken from https://discuss.pytorch.org/t/computing-the-mean-and-std-of-dataset/34949/31
     """
     train_df = pacs[pacs['domain'] != target_domain]
     transform = T.ToTensor()
-    train_dataset = PACSDataset(train_df, transform)
-    train_loader = DataLoader(train_dataset, batch_size=64)
+    dataset = PACSDataset(train_df, transform)
+    loader = DataLoader(dataset, batch_size=10, num_workers=0, shuffle=False)
 
-    mean_sum = torch.zeros(3)
-    var_sum = torch.zeros(3)
-    total_pcount = 0
+    mean = 0.
+    for images, _ in loader:
+        # (b, 3, h, w)
+        batch_samples = images.size(0)
+        images = images.view(batch_samples, images.size(1), -1)
+        mean += images.mean(2).sum(0)
+    mean = mean / len(loader.dataset)
 
-    for images, _ in train_loader:
-        # images shape: (b, 3, h, w)
-        batch_pcount = images.shape[0] * images.shape[2] * images.shape[3]
-        batch_mean = images.mean(dim=(0, 2, 3))
-        mean_sum += batch_mean * batch_pcount
-        total_pcount += batch_pcount
-
-    mean = mean_sum / total_pcount
-
-    for images, _ in train_loader:
-        # images shape: (b, 3, h, w)
-        batch_pcount = images.shape[0] * images.shape[2] * images.shape[3]
-        batch_var = ((images - mean.view(1, 3, 1, 1)) ** 2).mean(dim=(0, 2, 3))
-        var_sum += batch_var * batch_pcount
-
-    std = torch.sqrt(var_sum / total_pcount)
+    var = 0.
+    pixel_count = 0
+    for images, _ in loader:
+        batch_samples = images.size(0)
+        images = images.view(batch_samples, images.size(1), -1)
+        var += ((images - mean.unsqueeze(1))**2).sum([0, 2])
+        pixel_count += images.nelement()
+    std = torch.sqrt(var / pixel_count)
 
     return mean, std
