@@ -1,4 +1,4 @@
-# Exploring Feature-based Data Augmentations addressing Domain Generalization
+# Addressing Domain Generalization by Exploring Feature-based Data Augmentations
 
 ## Objective and Scope
 
