@@ -1,6 +1,7 @@
 runs/
 models/resnet18/*
 models/resnet50/*
+models/mixstyle/*
 
 # taken from https://github.com/github/gitignore/blob/main/Python.gitignore
 # Byte-compiled / optimized / DLL files
