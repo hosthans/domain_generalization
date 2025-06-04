@@ -57,14 +57,16 @@ class MixStyle(nn.Module):
       Zhou et al. Domain Generalization with MixStyle. ICLR 2021.
     """
 
-    def __init__(self, p=0.5, alpha=0.1, eps=1e-6, mix="random"):
+    def __init__(self, p=0.5, alpha=0.1, eps=1e-6, mix="random", seed=42):
         """
         Args:
           p (float): probability of using MixStyle.
           alpha (float): parameter of the Beta distribution.
           eps (float): scaling parameter to avoid numerical issues.
           mix (str): how to mix.
+          seed (int): for reproducibility of results.
         """
+        random.seed(seed)
         super().__init__()
         self.p = p
         self.beta = torch.distributions.Beta(alpha, alpha)
