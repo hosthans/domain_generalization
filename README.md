@@ -2,7 +2,7 @@
 
 ## Objective and Scope
 
-This project is part of the course [xAI-Proj-M](https://univis.uni-bamberg.de/prg?search=lectures&department=070106&id=22594511) offered during summer semester 2025 offered by the [chair of explainable machine learning](https://www.uni-bamberg.de/en/ai/chair-of-explainable-machine-learning/) at the [university of Bamberg](https://www.uni-bamberg.de/en/). The goal of the project is to understand and tackle the problem of domain generalization with deep neural networks. For this purpose, the first step is to evaluate ResNet-18 and ResNet-50 on the PACS dataset. Building on this, feature-based data augmentations, such as [MixStyle](https://doi.org/10.1007/s11263-023-01913-8) are explored to potentially offer a solution.
+This project is part of the course [xAI-Proj-M](https://univis.uni-bamberg.de/prg?search=lectures&department=070106&id=22594511) offered during summer semester 2025 by the [chair of explainable machine learning](https://www.uni-bamberg.de/en/ai/chair-of-explainable-machine-learning/) at the [university of Bamberg](https://www.uni-bamberg.de/en/). The goal of the project is to understand and tackle the problem of domain generalization with deep neural networks. For this purpose, the first step is to evaluate ResNet-18 and ResNet-50 on the PACS dataset. Building on this, feature-based data augmentations, such as [MixStyle](https://doi.org/10.1007/s11263-023-01913-8) are explored to potentially offer a solution.
 
 ## Setup
 
