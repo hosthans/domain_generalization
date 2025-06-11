@@ -29,11 +29,12 @@ class PACSDataset(Dataset):
 def get_data_loaders(
         target_domain: str,
         train_batch_size: int,
-        test_batch_size=64,
+        test_batch_size=16,
         shuffle_train=True,
         shuffle_test=False,
         transform=None,
-        target_transform=None) -> tuple[DataLoader, DataLoader]:
+        target_transform=None,
+        drop_last=False) -> tuple[DataLoader, DataLoader]:
     """
     Returns a train and a test data loader for the PACS dataset for cross validation at a domain generalization task.
 
@@ -45,6 +46,7 @@ def get_data_loaders(
         suffle_test (bool=False): Whether to shuffle the test set.
         transform: The transformation to apply to every image in the dataset.
         target_transform: The transformation to apply to the labels in the dataset.
+        drop_last (bool=False): Whether to drop the last batch if it is smaller than the batch size.
     """
     domains = set(pacs['domain'])
     source_domains = domains - {target_domain}
@@ -58,8 +60,18 @@ def get_data_loaders(
     if test_batch_size < 1:
         test_batch_size = len(test_dataset)
 
-    train_loader = DataLoader(train_dataset, train_batch_size, shuffle_train)
-    test_loader = DataLoader(test_dataset, test_batch_size, shuffle_test)
+    train_loader = DataLoader(
+        train_dataset,
+        train_batch_size,
+        shuffle_train,
+        drop_last=drop_last
+    )
+    test_loader = DataLoader(
+        test_dataset,
+        test_batch_size,
+        shuffle_test,
+        drop_last=drop_last
+    )
 
     return train_loader, test_loader
 
