@@ -76,7 +76,7 @@ def get_data_loaders(
     return train_loader, test_loader
 
 
-def get_nomalization_stats(target_domain):
+def get_normalization_stats(target_domain):
     """
     Returns mean and standard deviation of the images in the train split for the given target domain.
     Method taken from https://discuss.pytorch.org/t/computing-the-mean-and-std-of-dataset/34949/31
