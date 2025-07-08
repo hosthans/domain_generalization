@@ -1,3 +1,4 @@
+import random
 import pandas as pd
 from datasets import load_dataset
 import torch
@@ -30,18 +31,20 @@ def get_data_loaders(
         target_domain: str,
         train_batch_size: int,
         test_batch_size=16,
+        split="twofold",
         shuffle_train=True,
         shuffle_test=False,
         transform=None,
         target_transform=None,
-        drop_last=False) -> tuple[DataLoader, DataLoader]:
+        drop_last=False) -> (tuple[DataLoader, DataLoader] | tuple[DataLoader, DataLoader, DataLoader]):
     """
-    Returns a train and a test data loader for the PACS dataset for cross validation at a domain generalization task.
+    Returns data loaders (train/test or train/test/val) for the PACS dataset for cross validation at a domain generalization task.
 
     Parameters:
         target_domain (str): The target domain for cross validation.
         train_batch_size (int): The batch size of the training set.
         test_batch_size (int=0): The batch size of the testing set. The whole testing set if set to 0.
+        split (str="twofold"): Whether to split into train and validation (twofold) or train, test and validation (threefold)
         shuffle_train (bool=True): Whether to shuffle the train set.
         suffle_test (bool=False): Whether to shuffle the test set.
         transform: The transformation to apply to every image in the dataset.
@@ -51,11 +54,19 @@ def get_data_loaders(
     domains = set(pacs['domain'])
     source_domains = domains - {target_domain}
 
+    if split == "threefold":
+        val_domain = random.choice([*source_domains])
+        source_domains = source_domains - {val_domain}
+
     train_df = pacs[pacs['domain'].isin(source_domains)]
     test_df = pacs[pacs['domain'] == target_domain]
 
     train_dataset = PACSDataset(train_df, transform, target_transform)
     test_dataset = PACSDataset(test_df, transform, target_transform)
+
+    if split == "threefold":
+        val_df = pacs[pacs['domain'] == val_domain]
+        val_dataset = PACSDataset(val_df, transform, target_transform)
 
     if test_batch_size < 1:
         test_batch_size = len(test_dataset)
@@ -72,6 +83,15 @@ def get_data_loaders(
         shuffle_test,
         drop_last=drop_last
     )
+
+    if split == "threefold":
+        val_loader = DataLoader(
+            val_dataset,
+            test_batch_size,
+            shuffle_test,
+            drop_last=drop_last
+        )
+        return train_loader, test_loader, val_loader
 
     return train_loader, test_loader
 
