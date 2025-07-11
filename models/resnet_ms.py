@@ -192,6 +192,7 @@ class ResNet(nn.Module):
         mixstyle_layers=[],
         mixstyle_p=0.5,
         mixstyle_alpha=0.3,
+        frozen_layers=[],
         **kwargs
     ):
         super(ResNet, self).__init__()
@@ -255,6 +256,26 @@ class ResNet(nn.Module):
             print('Insert MixStyle after the following layers: {}'.format(
                 mixstyle_layers))
         self.mixstyle_layers = mixstyle_layers
+
+        if frozen_layers:
+            print('Freezing the following layers {}'.format(frozen_layers))
+            for param in self.parameters():
+                param.requires_grad = False
+            unfrozen = [*self.classifier.parameters()]
+            if self.fc is not None:
+                unfrozen += self.fc.parameters()
+            if 'layer1' not in frozen_layers:
+                unfrozen += self.layer1.parameters()
+            if 'layer2' not in frozen_layers:
+                unfrozen += self.layer2.parameters()
+            if 'layer3' not in frozen_layers:
+                unfrozen += self.layer3.parameters()
+            if 'layer4' not in frozen_layers:
+                unfrozen += self.layer4.parameters()
+            
+            for param in unfrozen:
+                param.requires_grad = True
+
 
         self._init_params()
 
@@ -702,113 +723,4 @@ def resnet50_fc512_ms14_a0d1(num_classes, loss='softmax', pretrained=True, **kwa
     )
     if pretrained:
         init_pretrained_weights(model, model_urls['resnet50'])
-    return model
-
-
-"""Custom models"""
-
-
-def resnet18_fc512(num_classes, loss='softmax', pretrained=True, **kwargs):
-    model = ResNet(
-        num_classes=num_classes,
-        loss=loss,
-        block=BasicBlock,
-        layers=[2, 2, 2, 2],
-        last_stride=2,
-        fc_dims=[512],
-        dropout_p=None,
-        **kwargs
-    )
-    if pretrained:
-        init_pretrained_weights(model, model_urls['resnet18'])
-    return model
-
-
-def resnet18_fc512_ms12_a0d1(num_classes, loss='softmax', pretrained=True, **kwargs):
-    model = ResNet(
-        num_classes=num_classes,
-        loss=loss,
-        block=BasicBlock,
-        layers=[2, 2, 2, 2],
-        last_stride=2,
-        fc_dims=[512],
-        dropout_p=None,
-        mixstyle_layers=['layer1', 'layer2'],
-        mixstyle_alpha=0.1,
-        **kwargs
-    )
-    if pretrained:
-        init_pretrained_weights(model, model_urls['resnet18'])
-    return model
-
-
-def resnet18_fc512_ms12_a0d2(num_classes, loss='softmax', pretrained=True, **kwargs):
-    model = ResNet(
-        num_classes=num_classes,
-        loss=loss,
-        block=BasicBlock,
-        layers=[2, 2, 2, 2],
-        last_stride=2,
-        fc_dims=[512],
-        dropout_p=None,
-        mixstyle_layers=['layer1', 'layer2'],
-        mixstyle_alpha=0.2,
-        **kwargs
-    )
-    if pretrained:
-        init_pretrained_weights(model, model_urls['resnet18'])
-    return model
-
-
-def resnet18_fc512_ms12_a0d3(num_classes, loss='softmax', pretrained=True, **kwargs):
-    model = ResNet(
-        num_classes=num_classes,
-        loss=loss,
-        block=BasicBlock,
-        layers=[2, 2, 2, 2],
-        last_stride=2,
-        fc_dims=[512],
-        dropout_p=None,
-        mixstyle_layers=['layer1', 'layer2'],
-        mixstyle_alpha=0.3,
-        **kwargs
-    )
-    if pretrained:
-        init_pretrained_weights(model, model_urls['resnet18'])
-    return model
-
-
-def resnet18_fc512_ms1_a0d1(num_classes, loss='softmax', pretrained=True, **kwargs):
-    model = ResNet(
-        num_classes=num_classes,
-        loss=loss,
-        block=BasicBlock,
-        layers=[2, 2, 2, 2],
-        last_stride=2,
-        fc_dims=[512],
-        dropout_p=None,
-        mixstyle_layers=['layer1'],
-        mixstyle_alpha=0.1,
-        **kwargs
-    )
-    if pretrained:
-        init_pretrained_weights(model, model_urls['resnet18'])
-    return model
-
-
-def resnet18_fc512_ms1_a0d2(num_classes, loss='softmax', pretrained=True, **kwargs):
-    model = ResNet(
-        num_classes=num_classes,
-        loss=loss,
-        block=BasicBlock,
-        layers=[2, 2, 2, 2],
-        last_stride=2,
-        fc_dims=[512],
-        dropout_p=None,
-        mixstyle_layers=['layer1'],
-        mixstyle_alpha=0.2,
-        **kwargs
-    )
-    if pretrained:
-        init_pretrained_weights(model, model_urls['resnet18'])
     return model
