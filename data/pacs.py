@@ -19,12 +19,12 @@ class PACSDataset(Dataset):
         return len(self.dataframe)
 
     def __getitem__(self, idx):
-        image, _, label = self.dataframe.iloc[idx]
+        image, domain, label = self.dataframe.iloc[idx]
         if self.transform:
             image = self.transform(image)
         if self.target_transform:
             label = self.target_transform(label)
-        return image, label
+        return image, domain, label
 
 
 def get_data_loaders(

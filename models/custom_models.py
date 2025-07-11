@@ -1,5 +1,5 @@
-from .mixstyle import *
-from .resnet_ms import *
+from .resnet_ms import ResNet, BasicBlock, Bottleneck, model_urls, init_pretrained_weights
+
 
 def resnet18_fc512(num_classes, loss='softmax', pretrained=True, **kwargs):
     model = ResNet(
@@ -106,6 +106,7 @@ def resnet18_fc512_ms1_a0d2(num_classes, loss='softmax', pretrained=True, **kwar
         init_pretrained_weights(model, model_urls['resnet18'])
     return model
 
+
 def resnet18_fr123(num_classes, loss='softmax', pretrained=True, **kwargs):
     model = ResNet(
         num_classes=num_classes,
@@ -122,6 +123,7 @@ def resnet18_fr123(num_classes, loss='softmax', pretrained=True, **kwargs):
         init_pretrained_weights(model, model_urls['resnet18'])
     return model
 
+
 def resnet50_fc512_fr123(num_classes, loss='softmax', pretrained=True, **kwargs):
     model = ResNet(
         num_classes=num_classes,
@@ -130,6 +132,23 @@ def resnet50_fc512_fr123(num_classes, loss='softmax', pretrained=True, **kwargs)
         layers=[3, 4, 6, 3],
         last_stride=1,
         fc_dims=[512],
+        dropout_p=None,
+        frozen_layers=['layer1', 'layer2', 'layer3'],
+        **kwargs
+    )
+    if pretrained:
+        init_pretrained_weights(model, model_urls['resnet50'])
+    return model
+
+
+def resnet50_ms12_a0d1_fr123(num_classes, loss='softmax', pretrained=True, **kwargs):
+    model = ResNet(
+        num_classes=num_classes,
+        loss=loss,
+        block=Bottleneck,
+        layers=[3, 4, 6, 3],
+        last_stride=1,
+        fc_dims=None,
         dropout_p=None,
         frozen_layers=['layer1', 'layer2', 'layer3'],
         **kwargs

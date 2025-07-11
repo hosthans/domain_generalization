@@ -25,7 +25,7 @@ class OfficeHomeDataset(Dataset):
         idx = self.indices[idx]
         item = self.hf_dataset[idx]
 
-        image, label = item['image'], item['label']
+        image, domain, label = item['image'], item['domain'], item['label']
 
         if not isinstance(image, Image.Image):
             image = Image.fromarray(image)
@@ -34,7 +34,7 @@ class OfficeHomeDataset(Dataset):
             image = self.transform(image)
         if self.target_transform:
             label = self.target_transform(label)
-        return image, label
+        return image, domain, label
 
 
 def get_domain_indices(dataset, target_domain):

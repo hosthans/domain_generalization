@@ -193,6 +193,7 @@ class ResNet(nn.Module):
         mixstyle_p=0.5,
         mixstyle_alpha=0.3,
         frozen_layers=[],
+        verbose=True,
         **kwargs
     ):
         super(ResNet, self).__init__()
@@ -253,12 +254,14 @@ class ResNet(nn.Module):
         if mixstyle_layers:
             self.mixstyle = MixStyle(
                 p=mixstyle_p, alpha=mixstyle_alpha, mix='random')
-            print('Insert MixStyle after the following layers: {}'.format(
-                mixstyle_layers))
+            if verbose:
+                print('Insert MixStyle after the following layers: {}'.format(
+                    mixstyle_layers))
         self.mixstyle_layers = mixstyle_layers
 
         if frozen_layers:
-            print('Freezing the following layers {}'.format(frozen_layers))
+            if verbose:
+                print('Freezing the following layers {}'.format(frozen_layers))
             for param in self.parameters():
                 param.requires_grad = False
             unfrozen = [*self.classifier.parameters()]
@@ -272,10 +275,9 @@ class ResNet(nn.Module):
                 unfrozen += self.layer3.parameters()
             if 'layer4' not in frozen_layers:
                 unfrozen += self.layer4.parameters()
-            
+
             for param in unfrozen:
                 param.requires_grad = True
-
 
         self._init_params()
 
