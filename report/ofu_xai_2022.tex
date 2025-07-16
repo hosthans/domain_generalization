@@ -1,0 +1,152 @@
+\documentclass[a4paper]{article}
+
+% if you need to pass options to natbib, use, e.g.:
+%     \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading neurips_2022
+
+
+% ready for submission
+%\usepackage{ofu_xai_2022}
+
+\input{math_commands.tex}
+
+% to compile a preprint version, e.g., for submission to arXiv, add add the
+% [preprint] option:
+%     \usepackage[preprint]{ofu_xai_2022}
+
+
+% to compile a camera-ready version, add the [final] option, e.g.:
+\usepackage[final, nonatbib]{ofu_xai_2022}
+
+% to avoid loading the natbib package, add option nonatbib:
+%    \usepackage[nonatbib]{ofu_xai_2022}
+
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+
+\usepackage[round]{natbib}
+%%%%
+
+\title{Project Report}
+
+
+% The \author macro works with any number of authors. There are two commands
+% used to separate the names and addresses of multiple authors: \And and \AND.
+%
+% Using \And between authors leaves it to LaTeX to determine where to break the
+% lines. Using \AND forces a line break at that point. So, if LaTeX puts 3 of 4
+% authors names on the first line, and the last on the second line, try using
+% \AND instead of \And before the third author name.
+
+
+\author{%
+  Hannes Weber%\thanks{Use footnote for providing further information
+    %about author (webpage, alternative address)} \\
+    \\
+  Otto-Friedrich University of Bamberg\\
+  96049 Bamberg, Germany\\
+  \texttt{hannes-christian.weber@stud.uni-bamberg.de} \\[0.5cm]
+  xAI-Proj-M: Domain Generalization \\
+  Degree: M.Sc. AI
+  % examples of more authors
+  % \And
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+  % \texttt{email} \\
+  % \AND
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+  % \texttt{email} \\
+  % \And
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+  % \texttt{email} \\
+  % \And
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+  % \texttt{email} \\
+}
+
+
+\begin{document}
+
+
+\maketitle
+\def\va{{\bm{a}}}
+
+\begin{abstract}
+  Here the abstract
+\end{abstract}
+
+\section{Section 1}
+
+\section{Conclusion}
+
+
+\section{Notation}
+\input{math_notation.tex}
+
+\section*{References}
+
+Any choice of citation style is acceptable as long as you are
+consistent. It is permissible to reduce the font size to \verb+small+ (9 point)
+when listing the references.
+Note that the Reference section does not count towards the page limit.
+\medskip
+
+
+\bibliography{bibliography}
+\bibliographystyle{abbrvnat}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Declaration of Authorship
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Declaration of Authorship}
+All final papers have to include the following ‘Declaration of Authorship’:
+
+{\parindent 0cm
+%%%%%%%%%%%%%%%%%%%%%%%%%%German%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Declaration of Authorship}
+Ich erkläre hiermit gemäß § 9 Abs. 12 APO, dass ich die vorstehende Seminararbeit selbstständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe. Des Weiteren erkläre ich, dass die digitale Fassung der gedruckten Ausfertigung der Seminararbeit ausnahmslos in Inhalt und Wortlaut entspricht und zur Kenntnis genommen wurde, dass diese digitale Fassung einer durch Software unterstützten, anonymisierten Prüfung auf Plagiate unterzogen werden kann.\\
+\vspace{2\baselineskip}
+  
+Bamberg, \today
+
+\rule[0.5em]{14em}{0.5pt} \hspace{0.25\linewidth}\rule[0.5em]{14em}{0.5pt}
+\vspace{1em}
+\hspace{4em} (Ort, Datum) \hspace{0.51\linewidth} (Unterschrift)
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\appendix
+
+
+\section{Appendix}
+
+
+Optionally include extra information (complete proofs, additional experiments and plots) in the appendix.
+This section will often be part of the supplemental material.
+
+
+\end{document}
