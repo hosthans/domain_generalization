@@ -135,6 +135,23 @@ def resnet18_fr123(num_classes, loss='softmax', pretrained=True, **kwargs):
 """ResNet + FC + Freezing"""
 
 
+def resnet50_fc512_fr1(num_classes, loss='softmax', pretrained=True, **kwargs):
+    model = ResNet(
+        num_classes=num_classes,
+        loss=loss,
+        block=Bottleneck,
+        layers=[3, 4, 6, 3],
+        last_stride=1,
+        fc_dims=[512],
+        dropout_p=None,
+        frozen_layers=['layer1'],
+        **kwargs
+    )
+    if pretrained:
+        init_pretrained_weights(model, model_urls['resnet50'])
+    return model
+
+
 def resnet50_fc512_fr12(num_classes, loss='softmax', pretrained=True, **kwargs):
     model = ResNet(
         num_classes=num_classes,
