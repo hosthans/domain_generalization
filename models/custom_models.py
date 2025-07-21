@@ -1,5 +1,26 @@
 from .resnet_ms import ResNet, BasicBlock, Bottleneck, model_urls, init_pretrained_weights
 
+"""ResnNet + MixStyle"""
+
+
+def resnet50_ms12_a0d1(num_classes, loss='softmax', pretrained=True, **kwargs):
+    model = ResNet(
+        num_classes=num_classes,
+        loss=loss,
+        block=Bottleneck,
+        layers=[3, 4, 6, 3],
+        last_stride=1,
+        fc_dims=None,
+        dropout_p=None,
+        mixstyle_layers=['layer1', 'layer2'],
+        mixstyle_alpha=0.1,
+        **kwargs
+    )
+    if pretrained:
+        init_pretrained_weights(model, model_urls['resnet50'])
+    return model
+
+
 """ResNet + FC"""
 
 
