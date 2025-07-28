@@ -31,10 +31,38 @@
 \usepackage{nicefrac}       % compact symbols for 1/2, etc.
 \usepackage{microtype}      % microtypography
 \usepackage{xcolor}         % colors
-\usepackage{graphicx}       % include graphics
-
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{caption}
 \usepackage[round]{natbib}
 %%%%
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+
+\definecolor{codegray}{gray}{0.95}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{codegray},
+	commentstyle=\color{green!50!black},
+	keywordstyle=\color{blue},
+	numberstyle=\tiny\color{gray},
+	stringstyle=\color{orange},
+	basicstyle=\ttfamily\footnotesize,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	numbers=left,
+	numbersep=5pt,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=2
+}
+
+\lstset{style=mystyle}
 
 \title{Project Report}
 
@@ -91,7 +119,7 @@
 \def\va{{\bm{a}}}
 
 \begin{abstract}
-  Here the abstract
+	This project addresses the challenge of domain generalization, which involves training models that generalize effectively to unseen target domains without access to target data during training. To this end, we implement and evaluate the MixStyle method, a feature-space data augmentation technique designed to mitigate domain shift by perturbing style statistics within intermediate network layers. Experimental evaluations are conducted on two benchmark datasets of varying scale - PACS (small-scale) and Office-Home (large-scale) - to assess the robustness and effectiveness of MixStyle under different data regimes. The empirical results demonstrate that MixStyle consistently enhances generalization performance across domains, with particularly notable gains in low-data scenarios. These findings highlight the potential of MixStyle as a lightweight yet effective approach for improving model robustness in domain generalization settings.
 \end{abstract}
 \clearpage
 \input{introduction.tex}
