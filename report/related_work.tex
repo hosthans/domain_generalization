@@ -55,14 +55,31 @@ On the other hand, Feature-Based Augmentation rely on mixing the CNN feature sta
 Now let's dive deeper into the Feature Space.
 \subsection{The Role of the Feature Space}
 % How is information hierarchically encoded in CNNs?
-The feature space in CNNs refers to the multidimensional representation of the the data that the network learns durinc training. This is crucial for the classification tasks performed by CNNs, as it isolates the features extracted from input images, allwoing the model to differentiate between various categories, whether it be domains or classes. CNNs hereby automatically extract features from images through their convolutional layers, creating a hierachical representation. With each layer capturing different levels of abstraction, from edges and dark spots, over to more complex features like shapes or even structures. \cite{zeilerVisualizingUnderstandingConvolutional2013,goodfellowDeepLearning2016}
+The feature space in CNNs refers to the multidimensional representation of the the data that the network learns durinc training. This is crucial for the classification tasks performed by CNNs, as it isolates the features extracted from input images, allwoing the model to differentiate between various categories, whether it be domains or classes.
 
-\begin{figure}[ht!]
+Hereby, CNNs automatically extract features from images through their convolutional layers, creating a hierachical representation. With each layer capturing different levels of abstraction - starting from low-level features such as edges and textures, then moving to more complex features like shapes and eventually to semantic representations like structures or even obejects in deeper layers. \cite{zeilerVisualizingUnderstandingConvolutional2013,goodfellowDeepLearning2016}
+
+\begin{figure}[ht]
     \centering
-    \includegraphics[width=0.85\linewidth]{images/Feature_Space-PACS.png}
-    \caption{Image from \cite{thomasWhatsLatentLeveraging2025}. Observe how the feature space reflects variations specific to the domain, also variations within the domains.}
-    \label{fig:feature_space}
+    \includegraphics[width=0.85\textwidth]{images/Learning-Feature-Representation.png}
+    \caption{Illustration of feature abstraction hierarchy in CNNs, from low-level (edges) to high-level (semantic object parts). Adapted from \cite{alexanderaminiMITIntroductionDeep2025}.}
+    \label{fig:Hierachy_of_Features}
 \end{figure}
+
+This hierachy show why shallow layers are often more domain-specific, as they are prone to capturing texture or lighting, while deeper layer are more semantic and thus domain-invariant. Feature-space domain generalization methods like MixStyle \cite{zhouMixStyleNeuralNetworks2023} start their approach there.
+
+
+Fature representations derived from CNNs, ofter form domain-specific clusters in the latent space. This in particular is problematic for Domain Generalization, where the models needs to learn representations that are invariant to such domain cues.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.85\textwidth]{images/Pipeline-Feature_Space.png}
+    \caption{A model pipeline showing input images from different domains processed by a pretrained feature extractor, producing clustered representations in feature space. Image from \cite{thomasWhatsLatentLeveraging2025}.}
+    \label{fig:Pipeline_Feature_Space}
+\end{figure}
+
+Clustered representations usually refelct the charecteristics of the source domain. Without any intervention, models trained on these clustered representations might sturggle to generalize to new domains.
+
+One effective way to address this issue is by utilising transfer learning, by reusing pretrained models.
 
 \subsection{Transfer Learning}
 
