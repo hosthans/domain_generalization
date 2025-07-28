@@ -97,10 +97,8 @@ Based on the assumption that domain-related style statistics are more prominent 
 
 The implementation, as described in Section~\ref{sususec:mechanismmixstyle}, is structured around a Python module that defines the mathematical operations of MixStyle within the forward function as shown in Listing~\ref{listingMixstyle}. This design ensures that all computations are executed during the forward pass. Additionally, a new module was introduced to encapsulate the various model architectures used during training and evaluation. Within this module, a parent class was defined for each model, extended with parameters that specify the insertion points of the MixStyle layers. This modular and parameterized approach enables seamless integration of MixStyle into different architectures, making it well-suited for use during model training.
 
-The implementation related to the mechanism described in Section~\ref{sususec:mechanismmixstyle}, is based on a modular Python structure in which the core MixStyle operations are defined within the forward function, as shown in Listing~\ref{listingMixstyle}. This implementation ensures that all mathematical computations are performed during the forward pass, thereby maintaining efficiency and compatibility with standard PyTorch workflows.
-
 \begin{lstlisting}[language=Python, caption={MixStyle implementation structure}, label=listingMixstyle]
-	class MixStyle(nn.Module):
+class MixStyle(nn.Module):
 	...
 	def __init__(self, p=0.5, alpha=0.1, eps=1e-6, mix="random", seed=42):
 	...
@@ -109,7 +107,7 @@ The implementation related to the mechanism described in Section~\ref{sususec:me
 	...
 \end{lstlisting}
 
-To facilitate the integration of MixStyle into various model architectures, an additional module was developed to encapsulate and manage different network configurations used for training and evaluation. This module defines a parent class for each model, extended with parameters that allow precise control over the insertion points of MixStyle layers. These configurations are predefined and stored under specific model names that also encode additional details such as the position of MixStyle layers and the setup of the final classification layer.
+To support the integration of MixStyle into various model architectures, an additional module was developed to encapsulate and manage different network configurations used for training and evaluation. This module defines a parent class for each model, extended with parameters that allow precise control over the insertion points of MixStyle layers. These configurations are predefined and stored under specific model names that also encode additional details such as the position of MixStyle layers and the setup of the final classification layer.
 
 As illustrated in Listing~\ref{listingModelLoading}, model instances can be easily loaded by referencing their respective names from the \texttt{resnet\_ms} module. This approach ensures a flexible and reproducible training pipeline, as each model variant is preconfigured with consistent parameters.
 
@@ -117,6 +115,4 @@ As illustrated in Listing~\ref{listingModelLoading}, model instances can be easi
 	MODEL = resnet_ms.resnet50_fc512_ms12_a0d1
 \end{lstlisting}
 
-
-
-
+To facilitate experimental reproducibility and ease of use, the most effective architectures were encapsulated as callable model definitions. These predefined models can be conveniently loaded within Jupyter notebooks or scripts, enabling seamless execution of various training and evaluation scenarios across different configurations. 
