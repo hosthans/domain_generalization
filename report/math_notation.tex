@@ -1,35 +1,29 @@
 % SOURCE: https://github.com/goodfeli/dlbook_notation/blob/master/math_commands.tex
 % Quote from github "We make them freely available for anyone to use."
-
-
-% Sometimes we have to include the following line to get this section
-% included in the Table of Contents despite being a chapter*
-This section provides a concise reference describing notation as used in the book by \citet{goodfellow2016deep}.
-If you are unfamiliar with any of the corresponding mathematical concepts,
-\citet{goodfellow2016deep} describe most of these ideas in
-chapters 2--4. \\[0.7cm]
-
 % Need to use minipage to keep title of table on same page as table
 % This is a hack to put a little title over the table
 % We cannot use "\section*", etc., they appear in the table of contents.
 % tocdepth does not work on this chapter.
-\centerline{\bf Numbers and Arrays}
+\centerline{\bf Symbols and Definitions}
+\vspace{0.5em}
+
 \bgroup
-% The \arraystretch definition here increases the space between rows in the table,
-% so that \displaystyle math has more vertical space.
-\def\arraystretch{1.5}
-\begin{tabular}{cp{3.25in}}
-$\displaystyle a$ & A scalar (integer or real)\\
-$\displaystyle \va$ & A vector\\
-$\displaystyle \mA$ & A matrix\\
-$\displaystyle \tA$ & A tensor\\
-$\displaystyle \mI_n$ & Identity matrix with $n$ rows and $n$ columns\\
-$\displaystyle \mI$ & Identity matrix with dimensionality implied by context\\
-$\displaystyle \ve^{(i)}$ & Standard basis vector $[0,\dots,0,1,0,\dots,0]$ with a 1 at position $i$\\
-$\displaystyle \text{diag}(\va)$ & A square, diagonal matrix with diagonal entries given by $\va$\\
-$\displaystyle \ra$ & A scalar random variable\\
-$\displaystyle \rva$ & A vector-valued random variable\\
-$\displaystyle \rmA$ & A matrix-valued random variable\\
+\def\arraystretch{1.5}  % Increases row spacing for better readability
+\begin{tabular}{c p{3.5in}}
+	
+	$\displaystyle \mathbf{f}, \mathbf{f}'$ & Feature maps extracted from convolutional layers. \\
+	
+	$\displaystyle \mathbf{\hat{f}}$ & Defining the output of any MixStyle layer. \\
+	
+	$\displaystyle \lambda$ & A scalar sampled from a $Beta$ distribution, controlling the degree of mixing between feature statistics. \\
+	
+	$\displaystyle \alpha$ & A scalar sampled controlling the $Beta$ distribution. \\
+	
+	$\displaystyle \mu$ & Mean. \\
+	
+	$\displaystyle \ro$ & Standard deviation. \\
+	
 \end{tabular}
+\egroup
 
 \clearpage
