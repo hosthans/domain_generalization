@@ -4,45 +4,45 @@ The top-level auxiliary file: ofu_xai_2022.aux
 The style file: abbrvnat.bst
 Database file #1: bibliography.bib
 Warning--empty journal in mixstyle_ref
-You've used 2 entries,
+You've used 1 entry,
             2773 wiz_defined-function locations,
-            601 strings with 4800 characters,
-and the built_in function-call counts, 798 in all, are:
-= -- 59
-> -- 49
-< -- 2
-+ -- 17
-- -- 15
-* -- 60
-:= -- 134
-add.period$ -- 6
-call.type$ -- 2
-change.case$ -- 10
-chr.to.int$ -- 2
-cite$ -- 5
-duplicate$ -- 40
-empty$ -- 64
-format.name$ -- 17
-if$ -- 156
+            596 strings with 4682 characters,
+and the built_in function-call counts, 330 in all, are:
+= -- 25
+> -- 10
+< -- 1
++ -- 4
+- -- 3
+* -- 17
+:= -- 58
+add.period$ -- 3
+call.type$ -- 1
+change.case$ -- 4
+chr.to.int$ -- 1
+cite$ -- 3
+duplicate$ -- 19
+empty$ -- 31
+format.name$ -- 4
+if$ -- 62
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 3
-newline$ -- 18
-num.names$ -- 8
-pop$ -- 27
+missing$ -- 1
+newline$ -- 13
+num.names$ -- 4
+pop$ -- 11
 preamble$ -- 1
-purify$ -- 9
+purify$ -- 3
 quote$ -- 0
-skip$ -- 30
+skip$ -- 14
 stack$ -- 0
-substring$ -- 4
-swap$ -- 2
-text.length$ -- 1
+substring$ -- 2
+swap$ -- 0
+text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 17
+type$ -- 11
 warning$ -- 1
-while$ -- 6
+while$ -- 3
 width$ -- 0
-write$ -- 31
+write$ -- 18
 (There was 1 warning)
