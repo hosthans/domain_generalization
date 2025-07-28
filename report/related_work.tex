@@ -70,10 +70,10 @@ This hierachy show why shallow layers are often more domain-specific, as they ar
 
 
 Fature representations derived from CNNs, ofter form domain-specific clusters in the latent space. This in particular is problematic for Domain Generalization, where the models needs to learn representations that are invariant to such domain cues.
-\begin{figure}[ht]
+\begin{figure}[!htb]
     \centering
-    \includegraphics[width=0.85\textwidth]{images/Pipeline-Feature_Space.png}
-    \caption{A model pipeline showing input images from different domains processed by a pretrained feature extractor, producing clustered representations in feature space. Image from \cite{thomasWhatsLatentLeveraging2025}.}
+    \includegraphics[height=0.25\textheight]{images/Pipeline-Feature_Space.png}
+    \caption{A model pipeline showing input images from different domains processed by a pretrained feature extractor, producing clustered representations in feature space. Image from \cite{thomasWhatsLatentLeveraging2025}, modified.}
     \label{fig:Pipeline_Feature_Space}
 \end{figure}
 
@@ -83,7 +83,7 @@ One effective way to address this issue is by utilising transfer learning, by re
 
 \subsection{Transfer Learning}
 
-While Transfer Learning is a concept that is independent of Domain Generalization, it may come useful in the context of Domain Generalization, by the use of pre-trained models. Pretrained models pretrained on large datasets, such as ImageNet, come with rich information about low level features, such as edges, textures, etc. These features can be transferred to the target task or domain, utilizing the pre-trained model as a feature extractor.  
+Transfer Learning refers to the reuse of models trained on large-scale datasets, such as ImageNet, to improve performance and generalization in related tasks. While Transfer Learning is a concept that is independent of Domain Generalization, it may come useful in the context of Domain Generalization. With CNNs providing a robust feature extraction backbone.
 
 
 \subsection{Freezing}
