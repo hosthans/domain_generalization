@@ -36,7 +36,7 @@ Common evaluation protocols include:
 
 Note all of the above mentioned datasets are also part of the \textbf{DomainBed} benchmark suite created by \cite{gulrajaniSearchLostDomain2020} for Domain Generalization, which includes more datasets, evaluations protocol and algorithms for Domain Generalization.
 
-The most common approaches to Domain Generalization according to a survery conducted by \cite{zhouDomainGeneralizationSurvey2022} are:
+The most common approaches to Domain Generalization according to a survery conducted by \cite{zhouDomainGeneralizationSurvey2022} are: %also see \cite{gulrajaniSearchLostDomain2020} TODO how to incorporate
 \begin{itemize}
  \item \textbf{Domain Alignment}: Most current domain generalization methods fall into the domain alignment category, aiming to reduce disparities between source domains to learn representations that are invariant across them
  \item \textbf{Meta-Leraning}: This approach, also known as 'learning to learn', trains a model on a variety of learning tasks to enable it to solve new learning tasks more effectively. In the context of DG, it helps the model generalize to new domains by learning from domain shifts in the source data.
@@ -78,12 +78,19 @@ This approach is particularly relevant to Domain Generalization, where the goal 
 
 Convolutional Neural Networks (CNNs) pretrained on large datasets tend to capture a hierarchy of features as seen in figure \ref{fig:Hierachy_of_Features} — from low-level structures like edges and textures to high-level semantic patterns. These pretrained networks are often used as \textbf{feature extractors} enabling downstream models to build upon robust and transferable representations rather than learning from scratch. Furthermore, beyond improved sampling efficiency, transfer learning can also stabilize training and reduce overfitting, especially in cases where the available training data is limited or varies substantially across domains. Thus, transfer learning provides a useful foundation for addressing domain shift in Domain Generalization settings, even though it is not exclusive to them.
 
-\subsection{Freezing}
-Another concept that is independent of Domain Generalization, but may come useful in the context of Domain Generalization, is the concept of freezing.
-Freezing refers to the practice of keeping certain layers of a neural network, in particular layers that contain batch normalization, fixed during the training process. This technique can be employed for Domain Generalization tasks, by preventing the batch normalization statistics from beeing update with data from diverse source domain, the model can btter reatain its robust, pre-trained features, which is crucial to achieve effective domain generalization. \cite{gulrajaniSearchLostDomain2020,zhouMixStyleNeuralNetworks2023}
+However, leveraging pretrained networks also requires careful handling — especially when it comes to controlling which parts of the network are updated during training. This leads to the concept of freezing, which helps maintain stable, domain-invariant representations.
 
+\subsection{Freezing}
+Freezing refers to the practice of preventing specific layers of a neural network from being updated during training. This is commonly applied in transfer learning to retain the general-purpose features learned by pretrained models, especially in the early convolutional layers.
+
+In Domain Generalization, freezing can be used to improve the model's ability to generalize across domains. Specifically, it helps prevent the network from overfitting to the domain-specific features of the source domains — an issue particularly relevant when training on multiple diverse datasets. By keeping the early or mid-level layers fixed, the model is encouraged to rely on more generalizable representations rather than learning domain-specific features. A critical motivation for freezing in DG arises from the use of Batch Normalization. Batch Normalization layers compute and update feature statistics (mean and variance) during training, which are sensitive to the distribution of the training data. In a multi-source setting, where training batches may contain samples from several domains, these statistics can become unstable or biased toward dominant domains. By freezing Batch Normalization layers, one can preserve the pretrained statistics and avoid learning domain-specific biases, thus supporting better generalization. \cite{Goodfellow-et-al-2016,zhouMixStyleNeuralNetworks2023}
+
+Therefore, freezing is a strategic complement to transfer learning: while transfer learning brings in generalizable knowledge, freezing ensures that this knowledge is not overwritten during training on source domains. It has been used effectively in several recent Domain Generalization approaches \cite{zhouMixStyleNeuralNetworks2023}.
 
 \subsection*{Summary}
-In summary, DG provides a more demanding but often more practical solution than DA for creating models that are robust to the diverse and unpredictable domain shifts encountered in real-world scenarios.
+In summary, Doamin Generalization provides a more demanding but often more practical solution than Domain Adaptation for creating models that are robust to the diverse and unpredictable domain shifts encountered in real-world scenarios.
+
+Transfer Learning and Freezing can be used to supplement the training process, by providing a robust feature extraction backbone and by preventing the model from overfitting to the domain-specific features of the source domains.
+
 
 \clearpage
