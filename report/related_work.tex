@@ -3,27 +3,27 @@ This section aims to present the theoretical background and related work relevan
 
 \subsection{Domain Generalization}
 
-Domain Generalization is a machine learning approach to enable machine learning models to generalize to new, unseen domains, without  access to the target domain data during the models training. Hereby Domain Generalization tries to learn generalized features from the source domain that can peform well even on unseen domains. This is particulary important for computer vision tasks - especially real world computer vision tasks, where the target domain data is subject to constant changes or is not even available at all, making it impossible to adapt a model continuously. \cite{liDeeperBroaderArtier2017,liuDEJAVUContinual2023,blanchardGeneralizingSeveralRelated2011}
+Domain Generalization is a machine learning approach to enable machine learning models to generalize to new, unseen domains, without access to the target domain data during the model's training. Hereby Domain Generalization tries to learn generalized features from the source domain that can perform well even on unseen domains. This is particularly important for computer vision tasks - especially real-world computer vision tasks, where the target domain data is subject to constant changes or is not even available at all, making it impossible to adapt a model continuously. \cite{liDeeperBroaderArtier2017,liuDEJAVUContinual2023,blanchardGeneralizingSeveralRelated2011}
 
 
-Furthermore, Domain Generalization can be broken down into two: Multi-Source Domain Generalization and Single-Source Domain Generalization.
-Multi-Source DG assumes that there is more than one relevant domain available, with the goal to use data from multiple sources to learn representations that are independent of different marginal distributions. \cite{blanchardGeneralizingSeveralRelated2011}
-Single-Source DG, on the other hand, assumes that there is only one relevant domain available during training, 
+Furthermore, Domain Generalization can be broken down into two categories: Multi-Source Domain Generalization and Single-Source Domain Generalization.
+Multi-Source Domain Generalization assumes that there is more than one relevant domain available, with the goal to use data from multiple sources to learn representations that are independent of different marginal distributions. \cite{blanchardGeneralizingSeveralRelated2011}
+Single-Source Domain Generalization, on the other hand, assumes that there is only one relevant domain available during training, and the goal is to learn representations that are invariant to the domain shift.
 
 The need to generalize well to new domains arises from the problem of domain shift. Domain shift can significantly worsen the performance of a model - especially DNNs - across different domains \cite{muandetDomainGeneralizationInvariant2013}. These shifts can be cause by a variety of factors. Common sources include:
 \begin{itemize}
     \item \textbf{Image Style}: Is a major source of domain shifts, such as changes in colours, textures, lighting, etc \cite{zhouMixStyleNeuralNetworks2023}.
     \item \textbf{Environmental Conditions}: Changes in the environment, such as weather, time of day, or camera settings, can also cause domain shifts \cite{schwonbergAugmentationbasedDomainGeneralization2023}.
-    \item \textbf{Visual Abstraction}: Datasets can vary in their level of abstraction, from relaistic photos over to abstracts sketches or paintings \cite{liDeeperBroaderArtier2017}.
+    \item \textbf{Visual Abstraction}: Datasets can vary in their level of abstraction, from realistic photos over to abstracts sketches or paintings \cite{liDeeperBroaderArtier2017}.
 \end{itemize}
 
 
 
-Hereby Domain Generalization needs to be distinguished from Domain Adaptation, as both paradigms address the challenge of domain shifht. While Domain Adaptation aims to adapt a model to perform well on a specific target domain, by reducing the performance gapbetween the source and target domains. Domain Generalization aims to learn domain-invariant features such that the model can perform well on new unseen target domains, without the need to see the target domain data during training \cite{liDeeperBroaderArtier2017}. Conversly, Domain Adaptation methods typically assume the access to the target domain data during training and trying to adapt the model from the source domain to perform well on the target domain \cite{liuDEJAVUContinual2023, wangDeepVisualDomain2018}. 
+Domain Generalization thus needs to be distinguished from Domain Adaptation, as both paradigms address the challenge of domain shift. While Domain Adaptation aims to adapt a model to perform well on a specific target domain, by reducing the performance gap between the source and target domains. Domain Generalization aims to learn domain-invariant features such that the model can perform well on new unseen target domains, without the need to see the target domain data during training \cite{liDeeperBroaderArtier2017}. Conversely, Domain Adaptation methods typically assume the access to the target domain data during training and trying to adapt the model from the source domain to perform well on the target domain \cite{liuDEJAVUContinual2023, wangDeepVisualDomain2018}. 
 
 To quantify the performance of a model benchmarks and evaluation protocols have been developed. Common benchmarks include:
 \begin{itemize}
-    \item \textbf{PACS}: \cite{liDeeperBroaderArtier2017} This is commonly used benchmark including four domains: photo, art painting, cartoon and sketch. It contains 9991 images across seven categories. The domains are designed to be maximally disctinct, covering a wide range of visual styles - from realistic photos to abstract sketches.
+    \item \textbf{PACS}: \cite{liDeeperBroaderArtier2017} This is commonly used benchmark including four domains: photo, art painting, cartoon and sketch. It contains 9991 images across seven categories. The domains are designed to be maximally distinct, covering a wide range of visual styles - from realistic photos to abstract sketches.
     \item \textbf{Office-Home}: \cite{venkateswaraDeepHashingNetwork2017} This dataset also contains four domains: art, clipart, product and real-world. With 15,500 images across 65 categories it is larger than PACS. The contents are related to objects found in office and home environments.
     \item \textbf{VLCS}: Consits out of four domains: PASCAL VOC2007 (V), LabelMe (L), Caltech-101 (C), and SUN09 (S). It contains 10729 images across five classes. %cite FangUnbiasedMetricLearning2013
 
@@ -31,15 +31,15 @@ To quantify the performance of a model benchmarks and evaluation protocols have 
 Common evaluation protocols include:
 \begin{itemize}
     \item \textbf{Leave-One-Domain-Out (LODO)}: Is a common evaluation protocol where one domain is held out as the target domain and the model is evaluated on the remaining domains. \cite{liDeeperBroaderArtier2017}
-    \item \textbf{Direct Transfer}: Is another approach where the model is trained on one dataset (e.g. MSMT17) and then evaluated on another dataset (e.g. Market1501), without any finetuning on the target domain. \cite{chongLearningDomainInvariant2021}
+    \item \textbf{Direct Transfer}: Is another approach where the model is trained on one dataset (e.g. MSMT17) and then evaluated on another dataset (e.g. Market1501), without any fine-tuning on the target domain. \cite{chongLearningDomainInvariant2021}
 \end{itemize}
 
 Note all of the above mentioned datasets are also part of the \textbf{DomainBed} benchmark suite created by \cite{gulrajaniSearchLostDomain2020} for Domain Generalization, which includes more datasets, evaluations protocol and algorithms for Domain Generalization.
 
-The most common approaches to Domain Generalization according to a survery conducted by \cite{zhouDomainGeneralizationSurvey2022} are: %also see \cite{gulrajaniSearchLostDomain2020} TODO how to incorporate
+The most common approaches to Domain Generalization according to a survey conducted by \cite{zhouDomainGeneralizationSurvey2022} are: %also see \cite{gulrajaniSearchLostDomain2020} TODO how to incorporate
 \begin{itemize}
  \item \textbf{Domain Alignment}: Most current domain generalization methods fall into the domain alignment category, aiming to reduce disparities between source domains to learn representations that are invariant across them
- \item \textbf{Meta-Leraning}: This approach, also known as 'learning to learn', trains a model on a variety of learning tasks to enable it to solve new learning tasks more effectively. In the context of DG, it helps the model generalize to new domains by learning from domain shifts in the source data.
+ \item \textbf{Meta-Learning}: This approach, also known as 'learning to learn', trains a model on a variety of learning tasks to enable it to solve new learning tasks more effectively. In the context of DG, it helps the model generalize to new domains by learning from domain shifts in the source data.
  \item \textbf{Data Augmentation}: Involves expanding the original dataset with new transformed data, simulating domain shifts.
 \end{itemize}
 
@@ -47,12 +47,12 @@ In the latter category two techniques also employed in this project are situtate
 Image Transformation and Feature-Based Augmentation.
 
 Image Transformations are a common technique for data augmentation, where the original image is transformed by methods such as rotation, scaling, cropping, color jittering, etc.
-On the other hand, Feature-Based Augmentation rely on mixing the CNN feature statistics across different domains - precisely the appraoch in the focus of this project MixStyle (\cite{zhouMixStyleNeuralNetworks2023}), while others approaches may also combine domains in both feature as well as pixel space.
+On the other hand, Feature-Based Augmentation rely on mixing the CNN feature statistics across different domains - precisely the approach in the focus of this project MixStyle (\cite{zhouMixStyleNeuralNetworks2023}), while others approaches may also combine domains in both feature as well as pixel space.
 
 Now let's dive deeper into the Feature Space.
 \subsection{The Role of the Feature Space}
-The feature space in CNNs refers to the multidimensional representation of the the data that the network learns durinc training. This is crucial for the classification tasks performed by CNNs, as it isolates the features extracted from input images, allwoing the model to differentiate between various categories, whether it be domains or classes.
-Hereby, CNNs automatically extract features from images through their convolutional layers, creating a hierachical representation. With each layer capturing different levels of abstraction - starting from low-level features such as edges and textures, then moving to more complex features like shapes and eventually to semantic representations like structures or even obejects in deeper layers. \cite{zeilerVisualizingUnderstandingConvolutional2013,goodfellowDeepLearning2016}
+The feature space in CNNs refers to the multidimensional representation of the the data that the network learns during training. This is crucial for the classification tasks performed by CNNs, as it isolates the features extracted from input images, allowing the model to differentiate between various categories, whether it be domains or classes.
+Hereby, CNNs automatically extract features from images through their convolutional layers, creating a hierachical representation. With each layer capturing different levels of abstraction - starting from low-level features such as edges and textures, then moving to more complex features like shapes and eventually to semantic representations like structures or even objects in deeper layers. \cite{zeilerVisualizingUnderstandingConvolutional2013,goodfellowDeepLearning2016}
 
 \begin{figure}[ht]
     \centering
@@ -61,7 +61,7 @@ Hereby, CNNs automatically extract features from images through their convolutio
     \label{fig:Hierachy_of_Features}
 \end{figure}
 This hierachy show why shallow layers are often more domain-specific, as they are prone to capturing texture or lighting, while deeper layer are more semantic and thus domain-invariant. Feature-space domain generalization methods like MixStyle \cite{zhouMixStyleNeuralNetworks2023} start their approach there.
-Fature representations derived from CNNs, ofter form domain-specific clusters in the latent space. This in particular is problematic for Domain Generalization, where the models needs to learn representations that are invariant to such domain cues. \cite{zhouDomainGeneralizationSurvey2022}
+Feature representations derived from CNNs, often form domain-specific clusters in the latent space. This in particular is problematic for Domain Generalization, where the models needs to learn representations that are invariant to such domain cues. \cite{zhouDomainGeneralizationSurvey2022}
 
 \begin{figure}[!htb]
     \centering
@@ -69,8 +69,8 @@ Fature representations derived from CNNs, ofter form domain-specific clusters in
     \caption{A model pipeline showing input images from different domains processed by a pretrained feature extractor, producing clustered representations in feature space. Image from \cite{thomasWhatsLatentLeveraging2025}, modified.}
     \label{fig:Pipeline_Feature_Space}
 \end{figure}
-Clustered representations usually refelct the charecteristics of the source domain. Without any intervention, models trained on these clustered representations might sturggle to generalize to new domains.
-One effective way to address this issue is by utilising transfer learning, by reusing pretrained models.
+Clustered representations usually reflect the characteristics of the source domain. Without any intervention from the outside, models trained on these clustered representations might struggle to generalize to new domains.
+One effective way to address this issue is by utilizing transfer learning, by reusing pretrained models.
 \subsection{Transfer Learning}
 Transfer learning refers to the process of leveraging knowledge obtained from one task or domain to improve performance on a different, yet related, task. In the context of computer vision, it often involves using models pretrained on large-scale datasets — such as ImageNet — and adapting them to new tasks with limited data.
 
@@ -88,7 +88,7 @@ In Domain Generalization, freezing can be used to improve the model's ability to
 Therefore, freezing is a strategic complement to transfer learning: while transfer learning brings in generalizable knowledge, freezing ensures that this knowledge is not overwritten during training on source domains. It has been used effectively in several recent Domain Generalization approaches \cite{zhouMixStyleNeuralNetworks2023}.
 
 \subsection*{Summary}
-In summary, Doamin Generalization provides a more demanding but often more practical solution than Domain Adaptation for creating models that are robust to the diverse and unpredictable domain shifts encountered in real-world scenarios.
+In summary, Domain Generalization provides a more demanding but often more practical solution than Domain Adaptation for creating models that are robust to the diverse and unpredictable domain shifts encountered in real-world scenarios.
 
 Transfer Learning and Freezing can be used to supplement the training process, by providing a robust feature extraction backbone and by preventing the model from overfitting to the domain-specific features of the source domains.
 
