@@ -1,0 +1,10 @@
+# aux files
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+
+# pdf files
+*.pdf
