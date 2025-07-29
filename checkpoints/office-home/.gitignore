@@ -1,2 +1,6 @@
 *
 !.gitignore
+!best_Art_resnet50_fc512_ms12_a0d1_fr1.pt
+!best_Clipart_resnet50_fc512_ms12_a0d1_fr1.pt
+!best_Product_resnet50_fc512_ms12_a0d1_fr1.pt
+!best_Real World_resnet50_fc512_ms12_a0d1_fr1.pt

@@ -1,2 +1,10 @@
 *
 !.gitignore
+!best_art_painting_resnet50_fc512_ms12_a0d1_fr1.pt
+!best_cartoon_resnet50_fc512_ms12_a0d1_fr1.pt
+!best_photo_resnet50_fc512_ms12_a0d1_fr1.pt
+!best_sketch_resnet50_fc512_ms12_a0d1_fr1.pt
+!best_art_painting_resnet50_fc512_ms12_a0d1.pt
+!best_cartoon_resnet50_fc512_ms12_a0d1.pt
+!best_photo_resnet50_fc512_ms12_a0d1.pt
+!best_sketch_resnet50_fc512_ms12_a0d1.pt
