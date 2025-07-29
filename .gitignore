@@ -188,3 +188,4 @@ cython_debug/
 *.fdb_latexmk
 *.synctex.gz
 report/.DS_Store
+*busy*
