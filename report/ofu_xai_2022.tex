@@ -122,9 +122,10 @@
 \begin{abstract}
 	This project addresses the challenge of domain generalization, which involves training models that generalize effectively to unseen target domains without access to target data during training. To this end, we implement and evaluate the MixStyle method, a feature-space data augmentation technique designed to mitigate domain shift by perturbing style statistics within intermediate network layers. Experimental evaluations are conducted on two benchmark datasets of varying scale - PACS (small-scale) and Office-Home (large-scale) - to assess the robustness and effectiveness of MixStyle under different data regimes. The empirical results demonstrate that MixStyle consistently enhances generalization performance across domains, with particularly notable gains in low-data scenarios. These findings highlight the potential of MixStyle as a lightweight yet effective approach for improving model robustness in domain generalization settings.
 \end{abstract}
-
-
+\clearpage
 \input{introduction.tex}
+
+\input{related_work.tex}
 \input{methods.tex}
 \input{experimental_setup.tex}
 \input{experiments.tex}
@@ -135,25 +136,17 @@
 \section{Notation}
 \input{math_notation.tex}
 
-\section*{References}
-
-Any choice of citation style is acceptable as long as you are
-consistent. It is permissible to reduce the font size to \verb+small+ (9 point)
-when listing the references.
-Note that the Reference section does not count towards the page limit.
 \medskip
 
 
-\bibliography{bibliography}
+
+\bibliography{xAI-Proj}
 \bibliographystyle{abbrvnat}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Declaration of Authorship
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section*{Declaration of Authorship}
-All final papers have to include the following ‘Declaration of Authorship’:
 
 {\parindent 0cm
 %%%%%%%%%%%%%%%%%%%%%%%%%%German%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
