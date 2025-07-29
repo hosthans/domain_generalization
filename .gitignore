@@ -186,4 +186,5 @@ cython_debug/
 *.blg
 *.fls
 *.fdb_latexmk
+*.synctex.gz
 report/.DS_Store
