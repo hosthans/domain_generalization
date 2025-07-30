@@ -41,13 +41,13 @@ The results of our baseline as well as from our most promising configurations ar
 
 The performance across all ResNet-50 models in the photo domain is also consistently high at about 98\%. This points out that including this domain when evaluating models pretrained on ImageNet is less informative as the domain gap is almost nonexistent compared to the other domains. A comparison with models trained from scratch would provide more insight here.
 
-To evaluate the performance of Mixstyle in the latent space, we analyzed the output of the models right before the classification layer with tSNE. The corresponding plots of a ResNet-50 model with an introduced 512-dimensional fully-connected layer with and without Mixstyle are shown in figure \ref{fig:tSNE}. For both models, sketch was used as the validation domain, hence this domain is clearly separated from the rest. Ideally, Mixstyle should make the clusters more uniform, so that one class should fall in the same cluster for all domains. It is barely noticeable, but the clusters are a bit more overlapping with Mixstyle. There is also more structure to the sketch cluster which indicates a slightly better separation of classes in this domain.
+To evaluate the performance of Mixstyle in the latent space, we analyzed the output of the models right before the classification layer with t-SNE. The corresponding plots of a ResNet-50 model with an introduced 512-dimensional fully-connected layer with and without Mixstyle are shown in figure \ref{fig:tSNE}. For both models, sketch was used as the validation domain, hence this domain is clearly separated from the rest. Ideally, Mixstyle should make the clusters more uniform, so that one class should fall in the same cluster for all domains. It is barely noticeable, but the clusters are a bit more overlapping with Mixstyle. There is also more structure to the sketch cluster which indicates a slightly better separation of classes in this domain.
 
 \begin{figure}
     \centering
     \includegraphics[width=.95\textwidth]{images/tsne_pacs_resnet50_fc512_ms12_a0d1_.png}
     \includegraphics[width=.95\textwidth]{images/tsne_pacs_resnet50_fc512_.png}
-    \caption{tSNE evaluation from the output of an introduced 512-dimensional fully connected layer right before the classification layer of a ResNet-50 model with (top) and without (bottom) Mixstyle after the first two layers, respectively. For both models, sketch (red) was used as validation domain.}
+    \caption{t-SNE evaluation from the output of an introduced 512-dimensional fully connected layer right before the classification layer of a ResNet-50 model with (top) and without (bottom) Mixstyle after the first two layers, respectively. For both models, sketch (red) was used as validation domain.}
     \label{fig:tSNE}
 \end{figure}
 

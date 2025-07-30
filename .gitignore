@@ -8,6 +8,10 @@ __pycache__/
 # C extensions
 *.so
 
+#MacOS
+.DS_Store
+*/.DS_Store
+
 # Distribution / packaging
 .Python
 build/
@@ -187,5 +191,5 @@ cython_debug/
 *.fls
 *.fdb_latexmk
 *.synctex.gz
-report/.DS_Store
+
 *busy*

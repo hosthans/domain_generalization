@@ -49,7 +49,7 @@ On the other hand, Feature-Based Augmentation rely on mixing the CNN feature sta
 The following subsection will dive deeper into the Feature Space.
 \subsection{The Role of the Feature Space}
 The feature space in CNNs refers to the multidimensional representation of the the data that the network learns during training. This is crucial for the classification tasks performed by CNNs, as it isolates the features extracted from input images, allowing the model to differentiate between various categories, whether it be domains or classes.
-Hereby, CNNs automatically extract features from images through their convolutional layers, creating a hierachical representation. With each layer capturing different levels of abstraction - starting from low-level features such as edges and textures, then moving to more complex features like shapes and eventually to semantic representations like structures or even objects in deeper layers. \cite{zeilerVisualizingUnderstandingConvolutional2013,goodfellowDeepLearning2016}
+Hereby, CNNs automatically extract features from images through their convolutional layers, creating a hierachical representation. With each layer capturing different levels of abstraction - starting from low-level features such as edges and textures, then moving to more complex features like shapes and eventually to semantic representations like structures or even objects in deeper layers. \cite{zeilerVisualizingUnderstandingConvolutional2013,Goodfellow-et-al-2016}
 
 \begin{figure}[ht]
     \centering
@@ -62,7 +62,7 @@ Feature representations derived from CNNs, often form domain-specific clusters i
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[height=0.25\textheight]{images/Pipeline-Feature_Space.png}
+    \includegraphics[height=0.33\textheight]{images/Pipeline-Feature_Space.png}
     \caption{A model pipeline showing input images from different domains processed by a pretrained feature extractor, producing clustered representations in feature space. Image from \cite{thomasWhatsLatentLeveraging2025}, modified.}
     \label{fig:Pipeline_Feature_Space}
 \end{figure}
@@ -88,4 +88,3 @@ Therefore, freezing is a strategic complement to transfer learning: while transf
 In summary, Domain Generalization provides a more demanding but often more practical solution than Domain Adaptation for creating models that are robust to the diverse and unpredictable domain shifts encountered in real-world scenarios.
 
 Transfer Learning and Freezing can be used to supplement the training process, by providing a robust feature extraction backbone and by preventing the model from overfitting to the domain-specific features of the source domains.
-\clearpage
