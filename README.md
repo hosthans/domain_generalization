@@ -10,7 +10,7 @@ You first need to download [Anaconda or Miniconda](https://www.anaconda.com/down
 
 ## Usage
 
-The experimental setup is split in three Jupyter notebooks: our [main setup with PACS](./notebooks/PACSSetup.ipynb), a [train/test/val split (PACS)](./notebooks/PACSThreefold.ipynb) and a [setup with the Office-Home dataset](./notebooks/OfficeHomeSetup.ipynb). The folder [data](./data/) contains our custom dataloaders for the two datasets as well as two demo notebooks. In the folder [models](./models/) are our model configurations. [resnet_ms.py](./models/resnet_ms.py) contains the implementation including Mixstyle from the original authors. [custom_models.py](./models/custom_models.py) contains our custom configurations.
+The experimental setup is split in three Jupyter notebooks: our [main setup with PACS](./notebooks/PACSSetup.ipynb), a [train/test/val split (PACS)](./notebooks/PACSThreefold.ipynb) and a [setup with the Office-Home dataset](./notebooks/OfficeHomeSetup.ipynb). The folder [data](./data/) contains our custom dataloaders for the two datasets as well as two demo notebooks. In the folder [models](./models/) are our model configurations. [resnet_ms.py](./models/resnet_ms.py) contains the implementation including MixStyle from the original authors. [custom_models.py](./models/custom_models.py) contains our custom configurations.
 
 The [checkpoints](./checkpoints/) folder contains our most notable trained models. This is also divided in the different experimental setups. Note that the domain name in the name of the checkpoint refers to the domain, the model was validated/tested on.
 

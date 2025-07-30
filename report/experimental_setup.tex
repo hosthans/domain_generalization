@@ -6,7 +6,7 @@ Building on the provided theoretical foundation, this section offers an overview
 
 PACS \citep{liDeeperBroaderArtier2017} is an image dataset specifically designed for domain generalization. It contains seven classes (e.g., ``dog'', ``house'', ``guitar''), distributed across four domains (photo, art painting, cartoon, sketch). These domain shifts are rather extreme, which is ideal for testing style robustness.
 
-Office-Home \citep{venkateswaraDeepHashingNetwork2017} is another common dataset for domain adaptation and generalization. It has 65 classes containing objects commonly found in office and home environments from four domains: art, clip art, product and real-world. It hence offers a more realistic style variation than PACS and provides us with a different setting in which we can test generalization ability.
+Office-Home \citep{venkateswaraDeepHashingNetwork2017} is another common dataset for domain adaptation and generalization. It has 65 classes containing objects commonly found in office and home environments from four domains: art, clip art, product and real-world. It hence offers a more realistic variation than PACS and provides us with a different setting in which we can test generalization ability.
 
 \subsection{Technical Setup}
 
@@ -31,7 +31,7 @@ Our evaluation was conducted in a Jupyter notebook as it provides a suitable env
     \label{tab:hyperparameters}
 \end{table}
 
-Hyperparameters were tuned manually and are listed in table \ref{tab:hyperparameters}. You may notice, that for early stopping, we have a patience of 10, but are training for at most 25 epochs. Due to time constraints, we couldn't find a suitable configuration that employs early stopping and at the same time ensures enough training.
+Hyperparameters were tuned manually and are listed in table \ref{tab:hyperparameters}. You may notice, that for early stopping, we have a patience of 10, but are training for at most 25 epochs. Due to computational resource constraints, we couldn't find a suitable configuration that employs early stopping and at the same time ensures enough training.
 
 \subsection{Models and Metrics}
 

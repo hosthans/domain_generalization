@@ -35,6 +35,7 @@
 \usepackage{subcaption}
 \usepackage{caption}
 \usepackage[round]{natbib}
+\usepackage{pdfpages}
 %%%%
 
 \usepackage{listings}
@@ -78,15 +79,15 @@
 
 
 \author{%
- Maximilian Emmanuel Rittler, Johannes Christian Schuster, Hannes Christian Weber %\thanks{Use footnote for providing further information
+ Maximilian Emanuel Rittler, Johannes Christian Schuster, Hannes Christian Weber %\thanks{Use footnote for providing further information
     %about author (webpage, alternative address)} \\
     \\
   Otto-Friedrich University of Bamberg\\
   96049 Bamberg, Germany\\
-  \href{mailto:maximilian-emmanuel.rittler@stud.uni-bamberg.de}{\texttt{maximilian-emmanuel.rittler@stud.uni-bamberg.de}} \\
-  \href{mailto:johannes-christian.schuster@stud.uni-bamberg.de}{\texttt{johannes-christian.schuster@stud.uni-bamberg.de}}
+  \href{mailto:maximilian-emanuel.rittler@stud.uni-bamberg.de}{\texttt{maximilian-emmanuel.rittler@stud.uni-bamberg.de}}\thanks{Sections 1 \& 2} \\
+  \href{mailto:johannes-christian.schuster@stud.uni-bamberg.de}{\texttt{johannes-christian.schuster@stud.uni-bamberg.de}}\thanks{Sections 4, 5 \& 6}
    \\
-   \href{mailto:hannes-christian.weber@stud.uni-bamberg.de}{\texttt{hannes-christian.weber@stud.uni-bamberg.de}}\\[0.5cm]
+   \href{mailto:hannes-christian.weber@stud.uni-bamberg.de}{\texttt{hannes-christian.weber@stud.uni-bamberg.de}}\thanks{Abstract, Section 3. Code available at: \url{https://github.com/hosthans/domain_generalization}}\\[0.5cm]
   xAI-Proj-M: Domain Generalization \\
   Degree: M.Sc. AI
   % examples of more authors
@@ -124,59 +125,43 @@
 \end{abstract}
 \clearpage
 \input{introduction.tex}
-
 \input{related_work.tex}
 \input{methods.tex}
 \input{experimental_setup.tex}
 \input{experiments.tex}
 \input{discussion.tex}
-\input{conclusion.tex}
-
-
-\section{Notation}
-\input{math_notation.tex}
-
-\medskip
-
-
+%\input{conclusion.tex}
+\clearpage
 
 \bibliography{xAI-Proj}
 \bibliographystyle{abbrvnat}
 
+\clearpage
+
+
+
+\input{math_notation.tex}
+\clearpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Declaration of Authorship
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-{\parindent 0cm
-%%%%%%%%%%%%%%%%%%%%%%%%%%German%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Declaration of Authorship}
-Ich erkläre hiermit gemäß § 9 Abs. 12 APO, dass ich die vorstehende Seminararbeit selbstständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe. Des Weiteren erkläre ich, dass die digitale Fassung der gedruckten Ausfertigung der Seminararbeit ausnahmslos in Inhalt und Wortlaut entspricht und zur Kenntnis genommen wurde, dass diese digitale Fassung einer durch Software unterstützten, anonymisierten Prüfung auf Plagiate unterzogen werden kann.\\
-\vspace{2\baselineskip}
+% {\parindent 0cm
+% %%%%%%%%%%%%%%%%%%%%%%%%%%German%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section*{Declaration of Authorship}
+% Ich erkläre hiermit gemäß § 9 Abs. 12 APO, dass ich die vorstehende Arbeit selbstständig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe. Des Weiteren erkläre ich, dass die digitale Fassung der gedruckten Ausfertigung der Arbeit ausnahmslos in Inhalt und Wortlaut entspricht und zur Kenntnis genommen wurde, dass diese digitale Fassung einer durch Software unterstützten, anonymisierten Prüfung auf Plagiate unterzogen werden kann.\\
+% \vspace{2\baselineskip}
   
-Bamberg, \today
+% Bamberg, \today
 
-\rule[0.5em]{14em}{0.5pt} \hspace{0.25\linewidth}\rule[0.5em]{14em}{0.5pt}
-\vspace{1em}
-\hspace{4em} (Ort, Datum) \hspace{0.51\linewidth} (Unterschrift)
-}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\appendix
-
-
-\section{Appendix}
-
-
-Optionally include extra information (complete proofs, additional experiments and plots) in the appendix.
-This section will often be part of the supplemental material.
-
+% \rule[0.5em]{14em}{0.5pt} \hspace{0.25\linewidth}\rule[0.5em]{14em}{0.5pt}
+% \vspace{1em}
+% \hspace{4em} (Ort, Datum) \hspace{0.51\linewidth} (Unterschrift)
+% }
+\clearpage
+% % I wannt to add a pdf of the code
+% \includepdf[pages=-]{Declaration_of_Authorship_Johannes_Schuster_signed}
+% \includepdf[pages=-]{declerationofAuthorship}
 
 \end{document}
